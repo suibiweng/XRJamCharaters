@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine.SceneManagement; 
+using System.IO;
 
 public class ClothManager : MonoBehaviour
 {
-    // public GameObject [] objects; 
-
     public int A_index,T_index,P_index,H_index,S_index; 
 
     public GameObject [] accessories; 
@@ -22,9 +21,12 @@ public class ClothManager : MonoBehaviour
     public GameObject obj; 
     public bool isEnabled = true; 
 
+    public static ClothManager Instance; 
+
     // Start is called before the first frame update
     void Start()
     {
+        findObj();
         objOff(); 
         A_index = 0; 
         T_index = 0; 
@@ -32,6 +34,58 @@ public class ClothManager : MonoBehaviour
         H_index = 0; 
         S_index = 0; 
 
+
+
+        if(PlayerPrefs.HasKey("a_index"))
+        {
+            A_index = PlayerPrefs.GetInt("a_index");
+            accessories[A_index].SetActive(true);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("a_index", 0 );
+        }
+
+        if(PlayerPrefs.HasKey("t_index"))
+        {
+            T_index = PlayerPrefs.GetInt("t_index");
+            tops[T_index].SetActive(true);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("t_index", 0 );
+        }
+
+        if(PlayerPrefs.HasKey("p_index"))
+        {
+            P_index = PlayerPrefs.GetInt("p_index");
+            pants[P_index].SetActive(true);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("p_index", 0 );
+        }
+
+        if(PlayerPrefs.HasKey("h_index"))
+        {
+            H_index = PlayerPrefs.GetInt("h_index");
+            hair[H_index].SetActive(true);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("h_index", 0 );
+        }
+
+        if(PlayerPrefs.HasKey("s_index"))
+        {
+            S_index = PlayerPrefs.GetInt("s_index");
+            shoes[S_index].SetActive(true);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("s_index", 0 );
+        }
+        
     }
 
     void Update()
@@ -39,22 +93,22 @@ public class ClothManager : MonoBehaviour
         // selectObj(index); 
         // showaObj(index);
        // OpenAccessories();  
+        //   for (int i = 0; i < tops.Length; i++)
+        // { 
+        //     Debug.Log(tops[i]); 
+        // }
     }
 
-    public void LoadScene(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName); 
-    }
-
-    public void objOff()
+    public void findObj()
     {
         accessories = GameObject.FindGameObjectsWithTag("aObj"); 
-        // if (accessories == null) 
-        // {
-        //     Debug.LogError("Failed to find an object");
-        //     this.enabled = false; 
-        //     return; 
-        // }
+        tops = GameObject.FindGameObjectsWithTag("tObj");
+        pants = GameObject.FindGameObjectsWithTag("pObj"); 
+        shoes = GameObject.FindGameObjectsWithTag("sObj"); 
+        hair = GameObject.FindGameObjectsWithTag("hObj"); 
+    }
+    public void objOff()
+    {
         for (int i = 0; i < accessories.Length; i++)
         {
             accessories[i].SetActive(false); 
@@ -64,50 +118,22 @@ public class ClothManager : MonoBehaviour
             //     Console.WriteLine(item); 
             // }
         }
-
-        tops = GameObject.FindGameObjectsWithTag("tObj");
-        //  if (tops == null) 
-        // {
-        //     Debug.LogError("Failed to find an object");
-        //     this.enabled = false; 
-        //     return; 
-        // } 
+      
         for (int i = 0; i < tops.Length; i++)
         {
             tops[i].SetActive(false); 
         }
 
-        pants = GameObject.FindGameObjectsWithTag("pObj"); 
-        // if (pants == null) 
-        // {
-        //     Debug.LogError("Failed to find an object");
-        //     this.enabled = false; 
-        //     return; 
-        // }
         for (int i = 0; i < pants.Length; i++)
         {
             pants[i].SetActive(false); 
         }
 
-        shoes = GameObject.FindGameObjectsWithTag("sObj"); 
-        // if (shoes == null) 
-        // {
-        //     Debug.LogError("Failed to find an object");
-        //     this.enabled = false; 
-        //     return; 
-        // }
         for (int i = 0; i < shoes.Length; i++)
         {
             shoes[i].SetActive(false); 
         }
 
-        hair = GameObject.FindGameObjectsWithTag("hObj"); 
-        if (hair == null) 
-        {
-            Debug.LogError("Failed to find an object");
-            this.enabled = false; 
-            return; 
-        }
         for (int i = 0; i < hair.Length; i++)
         {
             hair[i].SetActive(false); 
@@ -126,68 +152,67 @@ public class ClothManager : MonoBehaviour
 
     public void Next(int whicharray)
     {
-        A_index = 0; 
-        T_index = 0; 
-        P_index = 0; 
-        H_index = 0; 
-        S_index = 0; 
 
         switch(whicharray)
         {
             case 0:
-                if (A_index > accessories.Length)
+                A_index++;
+                if (A_index >= accessories.Length)
                 {
                     A_index = 0;
                 }
                     
                 closeObjs(accessories);
                 accessories[A_index].SetActive(true); 
-                
-                A_index++;
+                PlayerPrefs.SetInt("a_index", A_index);
             break;
             
             case 1:
                 T_index++;
-                if (T_index > tops.Length)
+                if (T_index >= tops.Length)
                 {
                     T_index = 0;
                 }
                     
                 closeObjs(tops);
                 tops[T_index].SetActive(true); 
+                PlayerPrefs.SetInt("t_index", T_index);
             break;
             
             case 2:
                 P_index++;
-                if (P_index > pants.Length)
+                if (P_index >= pants.Length)
                 {
                     P_index = 0;
                 }
                     
                 closeObjs(pants);
-                pants[P_index].SetActive(true); 
+                pants[P_index].SetActive(true);
+                PlayerPrefs.SetInt("p_index", P_index); 
             break;
 
             case 3:
                 H_index++;
-                if (H_index > hair.Length)
+                if (H_index >= hair.Length)
                 {
                     H_index = 0;
                 }
                     
                 closeObjs(hair);
                 hair[H_index].SetActive(true); 
+                PlayerPrefs.SetInt("h_index", H_index);
             break;
 
             case 4:
                 S_index++;
-                if (S_index > shoes.Length)
+                if (S_index >= shoes.Length)
                 {
                     S_index = 0;
                 }
                     
                 closeObjs(shoes);
                 shoes[S_index].SetActive(true); 
+                PlayerPrefs.SetInt("s_index", S_index);
             break;
         }
         
@@ -262,4 +287,16 @@ material.color
 Material.SetColor - API
 */
 
+    void destroyObj()
+    {
+        if (Instance != null)
+        {
+            Destroy(this.gameObject); 
+            return; 
+        }
+
+        Instance = this;
+        GameObject.DontDestroyOnLoad(this.gameObject);
+    }
 }
+
