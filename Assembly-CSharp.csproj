@@ -40,6 +40,7 @@
      <Compile Include="Assets\SaveData.cs" />
      <Compile Include="Assets\FlexibleColorPicker\Scripts\FCP_SpriteMeshEditor.cs" />
      <Compile Include="Assets\BlobCustomizer.cs" />
+     <Compile Include="Assets\StudioPage.cs" />
      <Compile Include="Assets\ChangeMaterialColor.cs" />
      <Compile Include="Assets\FlexibleColorPicker\ExampleScene\FCP_ExampleScript.cs" />
      <Compile Include="Assets\ClothManager.cs" />
@@ -49,7 +50,6 @@
      <Compile Include="Assets\HomePage.cs" />
      <Compile Include="Assets\PlayerDataManager.cs" />
      <Compile Include="Assets\FlexibleColorPicker\Scripts\FlexibleColorPicker.cs" />
-     <Compile Include="Assets\StudioPage.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
