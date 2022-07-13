@@ -9,8 +9,7 @@ using System.IO;
 
 public class ClothManager : MonoBehaviour
 {
-    public int A_index,T_index,P_index,H_index,S_index;
-    // public static readonly string SAVE_FOLDER = Application.dataPath = "/Saves/"; 
+
     public GameObject [] accessories; 
     public GameObject [] tops; 
     public GameObject [] pants; 
@@ -18,26 +17,29 @@ public class ClothManager : MonoBehaviour
     public GameObject [] hair; 
  
     //test toggle
-    public GameObject obj; 
+    public  GameObject obj;
     public bool isEnabled = true; 
 
     public static ClothManager Instance; 
+    public int A_index,T_index,P_index,H_index,S_index;
+    public string SAVE_FOLDER ;
+    private void Awake()
+    {
 
-    // private void Awake()
-    // {
-
-    //     if(!Directory.Exists(SAVE_FOLDER))
-    //     {
-    //         Directory.CreateDirectory(SAVE_FOLDER); 
-    //     }
-    //     else
-    //     {
-    //         File.WriteAllText(Application.dataPath + "/save.txt", json); 
-    //     }
-    // }
+        if(!Directory.Exists(SAVE_FOLDER))
+        {
+//            Directory.CreateDirectory(SAVE_FOLDER); 
+        }
+        else
+        {
+          //  File.WriteAllText(Application.dataPath + "/save.txt", json); 
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
+
+     SAVE_FOLDER   = Application.dataPath + "/Saves/"; 
         findObj();
         objOff(); 
         A_index = 0; 
@@ -46,7 +48,7 @@ public class ClothManager : MonoBehaviour
         H_index = 0; 
         S_index = 0; 
 
-        BlobPlayerPrefs(); 
+        // BlobPlayerPrefs(); 
     }
 
     void Update()
@@ -294,25 +296,25 @@ public class ClothManager : MonoBehaviour
         }
     }
 
-    // private void Save()
-    // {
-    //     int A_index = obj.GetInt();
-    //     int T_index = obj.GetInt();
-    //     int P_index = obj.GetInt();
-    //     int H_index = obj.GetInt();
-    //     int S_index = obj.GetInt();
+    public void Save()
+    {
+      //  int A_index = obj.GetInt();
+        //int T_index = obj.GetInt();
+        //int P_index = obj.GetInt();
+        //int H_index = obj.GetInt();
+        //int S_index = obj.GetInt();
 
-    //     SaveObject saveBlob = new SaveObject()
-    //     {
-    //         A_index = A_index;
-    //         T_index = T_index; 
-    //         P_index = P_index;
-    //         H_index = H_index;
-    //         S_index = S_index;
-    //     }
-    //     string json = JsonUtility.ToJson(SaveObject); 
-    //     File.WriteAllText(Application.dataPath + "/save.txt", json);  
-    // }
+        SaveObject saveBlob = new SaveObject()
+        {
+            A_index = A_index,
+            T_index = T_index,
+            P_index = P_index,
+            H_index = H_index,
+            S_index = S_index
+        };
+        string json =JsonUtility.ToJson(saveBlob); 
+        File.WriteAllText(Application.dataPath + "/save.txt", json);  
+    }
 /*
 Code to change material color of the clothes
 
@@ -332,9 +334,9 @@ Material.SetColor - API
         GameObject.DontDestroyOnLoad(this.gameObject);
     }
 
-    // public class SaveObject
-    // {
-    //     public int A_index,T_index,P_index,H_index,S_index = -1; 
-    // }
+    public class SaveObject
+    {
+        public int A_index,T_index,P_index,H_index,S_index = -1; 
+    }
 }
 

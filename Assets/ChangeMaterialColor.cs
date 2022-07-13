@@ -16,6 +16,7 @@ public class ChangeMaterialColor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         //find render of the game object 
         skr = body.GetComponent<Renderer>();
         gameObject.GetComponent<Button>().onClick.AddListener(ChangeSkinColor);

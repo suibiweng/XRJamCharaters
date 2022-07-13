@@ -12,6 +12,7 @@ public class ColorPicker : MonoBehaviour
     void Start()
     {
     
+    
 
         if(PlayerPrefs.HasKey("color"))
         {
