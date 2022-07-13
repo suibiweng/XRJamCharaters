@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO; 
 
 public class ColorPicker : MonoBehaviour
 {
@@ -9,38 +10,58 @@ public class ColorPicker : MonoBehaviour
     public FlexibleColorPicker fcp; 
     public Material material; 
 
+    public float red, green, blue; 
+    public string SAVE_FOLDER ;
     void Start()
     {
-    
-    
-
-        if(PlayerPrefs.HasKey("color"))
-        {
-            material.color = (Color)(new Color32((byte)PlayerPrefs.GetInt("red"),(byte)PlayerPrefs.GetInt("green"),(byte)PlayerPrefs.GetInt("blue"), 1));
-        }
-        else
-        {
-            PlayerPrefs.SetString("color", "set");
-            material.color = Color.white;
-        }
+        SAVE_FOLDER = Application.dataPath + "/Saves/"; 
+        // if(PlayerPrefs.HasKey("color"))
+        // {
+        //     material.color = (Color)(new Color32((byte)PlayerPrefs.GetInt("red"),(byte)PlayerPrefs.GetInt("green"),(byte)PlayerPrefs.GetInt("blue"), 1));
+        // }
+        // else
+        // {
+        //     PlayerPrefs.SetString("color", "set");
+        //     material.color = Color.white;
+        // }
     }
     private void Update()
     {
 
+        BlobPlayerPrefs();
+        
+    }
+
+    public void BlobPlayerPrefs()
+    {
         if(fcp!=null)
         {
-        material.color = fcp.color;
+            material.color = fcp.color;
 
-        PlayerPrefs.SetInt("red", ((Color32)material.color).r);
-        PlayerPrefs.SetInt("blue", ((Color32)material.color).b);
-        PlayerPrefs.SetInt("green", ((Color32)material.color).g);
+            PlayerPrefs.SetInt("red", ((Color32)material.color).r);
+            PlayerPrefs.SetInt("blue", ((Color32)material.color).b);
+            PlayerPrefs.SetInt("green", ((Color32)material.color).g);
 
 
-        if (material.color == null)
+            if (material.color == null)
+            {
+                material.color = Color.white;
+            }
+        }
+    }
+    public void Save()
+    {
+        SaveSkin saveSkin = new SaveSkin()
         {
-            material.color = Color.white;
-        }
-        }
-        
+            red = red, 
+            green = green, 
+            blue = blue, 
+        };
+        string json =JsonUtility.ToJson(saveSkin); 
+        File.WriteAllText(Application.dataPath + "/save.txt", json);  
+    }
+    public class SaveSkin
+    {
+        public float red, green, blue; 
     }
 }

@@ -22,6 +22,11 @@ public class ClothManager : MonoBehaviour
 
     public static ClothManager Instance; 
     public int A_index,T_index,P_index,H_index,S_index;
+    //referenced WAR dd on Youtube
+    public FlexibleColorPicker fcp; 
+    public Material material; 
+
+    public int red, green, blue; 
     public string SAVE_FOLDER ;
     private void Awake()
     {
@@ -39,7 +44,7 @@ public class ClothManager : MonoBehaviour
     void Start()
     {
 
-     SAVE_FOLDER   = Application.dataPath + "/Saves/"; 
+        SAVE_FOLDER = Application.dataPath + "/Saves/"; 
         findObj();
         objOff(); 
         A_index = 0; 
@@ -296,25 +301,55 @@ public class ClothManager : MonoBehaviour
         }
     }
 
+    public void ColorPicker()
+    {
+         if(fcp!=null)
+        {
+            material.color = fcp.color;
+            // red = (int) material.color.r; 
+            // green = (int) material.color.g; 
+            // blue = (int) material.color.b; 
+
+            PlayerPrefs.SetInt("red", ((Color32)material.color).r);
+            PlayerPrefs.SetInt("blue", ((Color32)material.color).b);
+            PlayerPrefs.SetInt("green", ((Color32)material.color).g);
+
+
+            if (material.color == null)
+            {
+                material.color = Color.white;
+            }
+        }
+    }
     public void Save()
     {
-      //  int A_index = obj.GetInt();
-        //int T_index = obj.GetInt();
-        //int P_index = obj.GetInt();
-        //int H_index = obj.GetInt();
-        //int S_index = obj.GetInt();
 
+        //save all assets and skin color 
         SaveObject saveBlob = new SaveObject()
         {
             A_index = A_index,
             T_index = T_index,
             P_index = P_index,
             H_index = H_index,
-            S_index = S_index
+            S_index = S_index,
+
+            red = red,
+            green = green,
+            blue = blue
         };
         string json =JsonUtility.ToJson(saveBlob); 
         File.WriteAllText(Application.dataPath + "/save.txt", json);  
     }
+
+    public void Load(string data) 
+    {
+        if (File.Exists(data))
+        {
+            string saveString = File.ReadAllText(data); 
+
+            SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString); 
+        }
+    }    
 /*
 Code to change material color of the clothes
 
@@ -337,6 +372,7 @@ Material.SetColor - API
     public class SaveObject
     {
         public int A_index,T_index,P_index,H_index,S_index = -1; 
+        public int red, green, blue; 
     }
 }
 
