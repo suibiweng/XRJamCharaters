@@ -7355,7 +7355,7 @@ PrefabInstance:
       objectReference: {fileID: 259908102}
     - target: {fileID: 3890877121135328817, guid: 423cf2bc77ac71b4e9f70790112795fc, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7142428586174768212, guid: 423cf2bc77ac71b4e9f70790112795fc, type: 3}
       propertyPath: m_RootOrder
@@ -7405,5 +7405,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: customizedBlob
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3890877121135328817, guid: 423cf2bc77ac71b4e9f70790112795fc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 423cf2bc77ac71b4e9f70790112795fc, type: 3}

@@ -36,20 +36,21 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\CharacterHandler.cs" />
-     <Compile Include="Assets\SaveData.cs" />
+     <Compile Include="Assets\Scripts\CharacterHandler.cs" />
+     <Compile Include="Assets\Scripts\SaveData.cs" />
      <Compile Include="Assets\FlexibleColorPicker\Scripts\FCP_SpriteMeshEditor.cs" />
-     <Compile Include="Assets\BlobCustomizer.cs" />
-     <Compile Include="Assets\StudioPage.cs" />
-     <Compile Include="Assets\ChangeMaterialColor.cs" />
+     <Compile Include="Assets\Scripts\BlobCustomizer.cs" />
+     <Compile Include="Assets\Scripts\StudioPage.cs" />
+     <Compile Include="Assets\Scripts\ChangeMaterialColor.cs" />
      <Compile Include="Assets\FlexibleColorPicker\ExampleScene\FCP_ExampleScript.cs" />
-     <Compile Include="Assets\ClothManager.cs" />
+     <Compile Include="Assets\Scripts\ClothManager.cs" />
      <Compile Include="Assets\FlexibleColorPicker\Scripts\FCP_Persistence.cs" />
-     <Compile Include="Assets\SaveBlobManager.cs" />
-     <Compile Include="Assets\ColorPicker.cs" />
-     <Compile Include="Assets\HomePage.cs" />
-     <Compile Include="Assets\PlayerDataManager.cs" />
+     <Compile Include="Assets\Scripts\SaveBlobManager.cs" />
+     <Compile Include="Assets\Scripts\ColorPicker.cs" />
+     <Compile Include="Assets\Scripts\HomePage.cs" />
+     <Compile Include="Assets\Scripts\PlayerDataManager.cs" />
      <Compile Include="Assets\FlexibleColorPicker\Scripts\FlexibleColorPicker.cs" />
+     <Compile Include="Assets\Scripts\AudioSound.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
