@@ -1208,6 +1208,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 2789090bce6a00a42835576d634aba23, type: 2}
+    - target: {fileID: 3890877121135328815, guid: 423cf2bc77ac71b4e9f70790112795fc, type: 3}
+      propertyPath: isLoadCloth
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7142428586174768212, guid: 423cf2bc77ac71b4e9f70790112795fc, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -7125,6 +7129,8 @@ MonoBehaviour:
   green: 0
   blue: 0
   SAVE_FOLDER: 
+  isLoadCloth: 0
+  saveJson: {fileID: 0}
 --- !u!1 &7797623154386446012
 GameObject:
   m_ObjectHideFlags: 0

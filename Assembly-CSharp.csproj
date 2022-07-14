@@ -48,9 +48,9 @@
      <Compile Include="Assets\Scripts\SaveBlobManager.cs" />
      <Compile Include="Assets\Scripts\ColorPicker.cs" />
      <Compile Include="Assets\Scripts\HomePage.cs" />
+     <Compile Include="Assets\Scripts\AudioSound.cs" />
      <Compile Include="Assets\Scripts\PlayerDataManager.cs" />
      <Compile Include="Assets\FlexibleColorPicker\Scripts\FlexibleColorPicker.cs" />
-     <Compile Include="Assets\Scripts\AudioSound.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

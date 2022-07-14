@@ -29,7 +29,7 @@ public class ClothManager : MonoBehaviour
 
     public float red, green, blue; 
     public string SAVE_FOLDER ;
-
+public bool isLoadCloth;
     public TextAsset saveJson; 
     private void Awake()
     {
@@ -45,7 +45,7 @@ public class ClothManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SAVE_FOLDER = Application.dataPath + "/Saves/"; 
+        SAVE_FOLDER = Application.dataPath + "/save.txt"; 
         findObj();
         objOff(); 
         A_index = 0; 
@@ -53,14 +53,32 @@ public class ClothManager : MonoBehaviour
         P_index = 0; 
         H_index = 0; 
         S_index = 0; 
+        if(isLoadCloth)
+        {
+            Load(); 
+        }
+        else
+        {
+            ColorPicker(); 
+        }
 
         // BlobPlayerPrefs(); 
-        ColorPicker(); 
+      
     }
 
     void Update()
     {
-        ColorPicker(); 
+
+
+        if(isLoadCloth){
+ 
+
+}else{
+  ColorPicker(); 
+
+
+}
+       // ColorPicker(); 
         // selectObj(index); 
         // showaObj(index);
        // OpenAccessories();  
@@ -118,6 +136,13 @@ public class ClothManager : MonoBehaviour
         foreach(var o in objs)
         {
             o.SetActive(false);
+        }
+    }
+    void openObjs(GameObject [] obs)
+    {
+        foreach(var o in obs)
+        {
+            o.SetActive(true); 
         }
     }
 
@@ -351,19 +376,47 @@ public class ClothManager : MonoBehaviour
             blue = blue
         };
         string json =JsonUtility.ToJson(saveBlob); 
-        File.WriteAllText(Application.dataPath + "/save.txt", json);  
+        File.WriteAllText(SAVE_FOLDER, json);  
     }
 
     public void Load() 
     {
         //reference Code Monkey Save and Load video 
-        if (File.Exists(SAVE_FOLDER + "save.txt"))
+        if (File.Exists(SAVE_FOLDER))
         {
-            string saveString = File.ReadAllText(SAVE_FOLDER + "save.txt"); 
+            string saveString = File.ReadAllText(SAVE_FOLDER); 
             Debug.Log(saveString); 
 
             SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString); 
+
+            A_index = saveObject.A_index;
+            T_index = saveObject.T_index; 
+            P_index = saveObject.P_index;
+            H_index = saveObject.H_index;  
+            S_index = saveObject.S_index; 
+            // print(A_index);
+            // print(T_index);
+            // print(P_index);
+            // print(H_index);
+            // print(S_index);
+
+            red = saveObject.red; 
+            green = saveObject.green; 
+            blue = saveObject.blue;
+            // print(red);
+            // print(green);
+            // print (blue);
+
+            accessories[A_index].SetActive(true); 
+            tops[T_index].SetActive(true); 
+            pants[P_index].SetActive(true);
+            hair[H_index].SetActive(true);
+            shoes[S_index].SetActive(true);
         }
+
+
+
+
 
         // SaveObject.SetInt(SaveObject.A_index);
         // Debug.Log(A_index); 
