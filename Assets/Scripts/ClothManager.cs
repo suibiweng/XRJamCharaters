@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine.SceneManagement; 
 using System.IO;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class ClothManager : MonoBehaviour
@@ -26,16 +27,16 @@ public class ClothManager : MonoBehaviour
     //referenced WAR dd on Youtube
     public FlexibleColorPicker fcp; 
     public Material material; 
-
+    public Color tempColor; 
     public float red, green, blue; 
-    public string SAVE_FOLDER ;
+    public string saveFile ;
 public bool isLoadCloth;
     public TextAsset saveJson; 
     private void Awake()
     {
-        if(!Directory.Exists(SAVE_FOLDER))
+        if(!Directory.Exists(saveFile))
         {
-//            Directory.CreateDirectory(SAVE_FOLDER); 
+//            Directory.CreateDirectory(saveFile); 
         }
         else
         {
@@ -45,7 +46,7 @@ public bool isLoadCloth;
     // Start is called before the first frame update
     void Start()
     {
-        SAVE_FOLDER = Application.dataPath + "/save.txt"; 
+        saveFile = Application.dataPath + "/save.txt"; 
         findObj();
         objOff(); 
         A_index = 0; 
@@ -376,24 +377,39 @@ public bool isLoadCloth;
             blue = blue
         };
         string json =JsonUtility.ToJson(saveBlob); 
-        File.WriteAllText(SAVE_FOLDER, json);  
+        File.WriteAllText(saveFile, json);  
+        
+        string saveString = File.ReadAllText(saveFile); 
+        Debug.Log(saveString); 
     }
 
     public void Load() 
     {
         //reference Code Monkey Save and Load video 
-        if (File.Exists(SAVE_FOLDER))
+        if (File.Exists(saveFile))
         {
-            string saveString = File.ReadAllText(SAVE_FOLDER); 
+            string saveString = File.ReadAllText(saveFile); 
             Debug.Log(saveString); 
 
             SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString); 
+
+            closeObjs(accessories);
+            closeObjs(tops);
+            closeObjs(pants);
+            closeObjs(hair);
+            closeObjs(shoes);
 
             A_index = saveObject.A_index;
             T_index = saveObject.T_index; 
             P_index = saveObject.P_index;
             H_index = saveObject.H_index;  
             S_index = saveObject.S_index; 
+
+            accessories[A_index].SetActive(true); 
+            tops[T_index].SetActive(true); 
+            pants[P_index].SetActive(true);
+            hair[H_index].SetActive(true);
+            shoes[S_index].SetActive(true);
             // print(A_index);
             // print(T_index);
             // print(P_index);
@@ -403,15 +419,19 @@ public bool isLoadCloth;
             red = saveObject.red; 
             green = saveObject.green; 
             blue = saveObject.blue;
+
+            tempColor.r = red;
+            tempColor.g = green;
+            tempColor.b = blue; 
+            // GetComponent<MeshRenderer>().material.color = tempColor;
+            fcp.color = tempColor;
+            
             // print(red);
             // print(green);
             // print (blue);
-
-            accessories[A_index].SetActive(true); 
-            tops[T_index].SetActive(true); 
-            pants[P_index].SetActive(true);
-            hair[H_index].SetActive(true);
-            shoes[S_index].SetActive(true);
+            PlayerPrefs.SetFloat("red", ((Color32)fcp.color).r);
+            PlayerPrefs.SetFloat("blue", ((Color32)fcp.color).b);
+            PlayerPrefs.SetFloat("green", ((Color32)fcp.color).g);
         }
 
 
