@@ -28,20 +28,22 @@ public class ClothManager : MonoBehaviour
     public FlexibleColorPicker fcp; 
     public Material material; 
     public Color tempColor; 
-    public float red, green, blue; 
+    public float red, green, blue;
+    // private static readonly string SAVE_FOLDER = Application.dataPath + "/Saves/"; 
     public string saveFile ;
-public bool isLoadCloth;
+    public bool isLoadCloth;
     public TextAsset saveJson; 
     private void Awake()
-    {
-        if(!Directory.Exists(saveFile))
-        {
-//            Directory.CreateDirectory(saveFile); 
-        }
-        else
-        {
-          //  File.WriteAllText(Application.dataPath + "/save.txt", json); 
-        }
+    { 
+        // [SerializeField]
+        // if(!Directory.Exists(SAVE_FOLDER))
+        // {
+        //    Directory.CreateDirectory(SAVE_FOLDER); 
+        // }
+        // else
+        // {
+        //    File.WriteAllText(Application.dataPath + "/save.txt", json); 
+        // }
     }
     // Start is called before the first frame update
     void Start()
@@ -71,14 +73,15 @@ public bool isLoadCloth;
     {
 
 
-        if(isLoadCloth){
- 
-
-}else{
-  ColorPicker(); 
-
-
-}
+        if(isLoadCloth)
+        {
+            // print("red:");
+            // Debug.Log(red); 
+        }
+        else
+        {
+            ColorPicker();
+        }
        // ColorPicker(); 
         // selectObj(index); 
         // showaObj(index);
@@ -354,6 +357,7 @@ public bool isLoadCloth;
         green = (byte)((Color32)material.color).g; 
         blue = (byte)((Color32)material.color).b; 
 
+        // print("red:");
         // Debug.Log(red); 
         // Debug.Log(green); 
         // Debug.Log(blue); 
@@ -419,19 +423,39 @@ public bool isLoadCloth;
             red = saveObject.red; 
             green = saveObject.green; 
             blue = saveObject.blue;
+            // // print(red);
+            // // print(green);
+            // // print (blue);
 
             tempColor.r = red;
             tempColor.g = green;
             tempColor.b = blue; 
-            // GetComponent<MeshRenderer>().material.color = tempColor;
-            fcp.color = tempColor;
-            
-            // print(red);
-            // print(green);
-            // print (blue);
-            PlayerPrefs.SetFloat("red", ((Color32)fcp.color).r);
-            PlayerPrefs.SetFloat("blue", ((Color32)fcp.color).b);
-            PlayerPrefs.SetFloat("green", ((Color32)fcp.color).g);
+
+            print("temp:");
+            Debug.Log(tempColor);
+            // // GetComponent<MeshRenderer>().material.color = tempColor;
+            material.color = tempColor;
+            print("material:");
+            Debug.Log(material.color);
+            print("fcp:");
+            Debug.Log((float)((Color32)fcp.color).r);
+            Debug.Log((float)((Color32)fcp.color).g);
+            Debug.Log((float)((Color32)fcp.color).b);
+
+            //Debug: when fcp.color is set to the color saved, it outputs rgba(255,255,255,255)
+            fcp.color = material.color; 
+            print("set fcp from material");
+            Debug.Log(fcp.color);
+
+            PlayerPrefs.SetFloat("red", (float)((Color32)fcp.color).r);
+            PlayerPrefs.SetFloat("blue", (float)((Color32)fcp.color).b);
+            PlayerPrefs.SetFloat("green", (float)((Color32)fcp.color).g);
+
+            // Debug.Log(red);
+            // Debug.Log((float)((Color32)fcp.color).r);
+            // Debug.Log((float)((Color32)fcp.color).g);
+            // Debug.Log((float)((Color32)fcp.color).b);
+
         }
 
 
