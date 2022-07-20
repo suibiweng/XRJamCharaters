@@ -51,29 +51,11 @@ public class StudioManager : MonoBehaviour
             o.SetActive(false); 
         }
     }
-    public void openObjs(int arr)
+    public void openObjs(GameObject [] obs)
     {
-        switch (arr)
+        foreach (var o in obs)
         {
-            case 0: 
-                foreach(var o in guitar)
-                {
-                    o.SetActive(true); 
-                    // visible = true;
-                }
-            break; 
-            case 1: 
-                foreach(var o in piano)
-                {
-                    o.SetActive(true); 
-                }
-            break; 
-            case 2: 
-                foreach(var o in drums)
-                {
-                    o.SetActive(true); 
-                }
-            break; 
+            o.SetActive(true); 
         }
     }
     public void clickedButton(int arr)
@@ -90,7 +72,7 @@ public class StudioManager : MonoBehaviour
                 }
                 else
                 {
-                    blob1.SetActive(true);LightShadowCasterMod
+                    blob1.SetActive(true);
                     blob2.SetActive(false);
                     blob3.SetActive(false); 
                 }

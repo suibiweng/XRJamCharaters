@@ -5,7 +5,7 @@ using UnityEngine;
 // referenced Unity Documentation on second AudioExample
 public class AudioSound : MonoBehaviour
 {
-    private GameObject blob;
+    public GameObject blob, blob1, blob2, blob3;
     public float pitchValue = 1.0f; 
     public AudioClip mySound; 
 
@@ -23,11 +23,20 @@ public class AudioSound : MonoBehaviour
     
     void OnGUI()
     {
-        pitchValue = GUI.HorizontalSlider(new Rect(700,380,100,500), pitchValue, low, high); 
-        audioSource.pitch = pitchValue; 
-        // pitchValue = GUI.HorizontalSlider(new Rect(300,380,100,500), pitchValue, low, high); 
-        // audioSource.pitch = pitchValue; 
-        // pitchValue = GUI.HorizontalSlider(new Rect(500,380,100,500), pitchValue, low, high); 
-        // audioSource.pitch = pitchValue; 
+        if(blob1.activeSelf == true)
+        {
+            pitchValue = GUI.HorizontalSlider(new Rect(700,380,100,500), pitchValue, low, high); 
+            audioSource.pitch = pitchValue;
+        } 
+        if(blob2.activeSelf == true)
+        {
+            pitchValue = GUI.HorizontalSlider(new Rect(100,380,100,500), pitchValue, low, high); 
+            audioSource.pitch = pitchValue; 
+        }
+        if(blob3.activeSelf == true)
+        {
+            pitchValue = GUI.HorizontalSlider(new Rect(500,350,100,500), pitchValue, low, high); 
+            audioSource.pitch = pitchValue; 
+        }
     }
 }

@@ -400,6 +400,7 @@ public class ClothManager : MonoBehaviour
 
             SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString); 
 
+            //for when user is in scene 2 and wants to load the last saved fit
             closeObjs(accessories);
             closeObjs(tops);
             closeObjs(pants);
@@ -430,9 +431,9 @@ public class ClothManager : MonoBehaviour
             // // print(green);
             // // print (blue);
 
-            tempColor.r = red;
-            tempColor.g = green;
-            tempColor.b = blue; 
+            tempColor.r = red/255f;
+            tempColor.g = green/255f;
+            tempColor.b = blue/255f; 
 
             print("temp:");
             Debug.Log(tempColor);
@@ -473,12 +474,6 @@ public class ClothManager : MonoBehaviour
         // myBlobList = JsonUtility.FromJson<BlobList>(saveJson.text);
 
     }    
-/*
-Code to change material color of the clothes
-
-material.color
-Material.SetColor - API
-*/
 
     void destroyObj()
     {
