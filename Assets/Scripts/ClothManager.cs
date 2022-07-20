@@ -58,6 +58,9 @@ public class ClothManager : MonoBehaviour
         S_index = 0; 
         if(isLoadCloth)
         {
+            //if the blob is currently active in the hiearchy, then load the blob and clothes
+            //will then turn off clothes on inactive blob so that clothes can be loaded on active blob 
+            //error says can't load clothes on other blob because only able to on first blob in array
             Load(); 
         }
         else

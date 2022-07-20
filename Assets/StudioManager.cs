@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StudioManager : MonoBehaviour
 {
+    public GameObject blob1, blob2, blob3; 
     public GameObject [] guitar; 
     public GameObject [] piano; 
     public GameObject [] drums;
     public GameObject [] instruments; 
     public int guitarIndex, pianoIndex, drumIndex; 
+    bool visible; 
+    Toggle gToggle, pToggle, dToggle; 
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +32,17 @@ public class StudioManager : MonoBehaviour
         guitar = GameObject.FindGameObjectsWithTag("guitar"); 
         piano = GameObject.FindGameObjectsWithTag("piano");
         drums = GameObject.FindGameObjectsWithTag("drums"); 
+
+        List<GameObject[]> instruments = new List<GameObject[]>();
+        instruments.Add(guitar); 
+        instruments.Add(piano); 
+        instruments.Add(drums);
+        
+        for(int i = 0; i < instruments.Count; i++)
+        {
+            print(instruments[i]);
+        }
+
     }
     void closeObjs(GameObject [] obs)
     {
@@ -44,6 +59,7 @@ public class StudioManager : MonoBehaviour
                 foreach(var o in guitar)
                 {
                     o.SetActive(true); 
+                    // visible = true;
                 }
             break; 
             case 1: 
@@ -56,6 +72,58 @@ public class StudioManager : MonoBehaviour
                 foreach(var o in drums)
                 {
                     o.SetActive(true); 
+                }
+            break; 
+        }
+    }
+    public void clickedButton(int arr)
+    {
+        switch(arr)
+        {
+            case 0: 
+                //if the blob is active and visible in the hierarchy
+                if(blob1.activeInHierarchy == true)
+                { 
+                    blob1.SetActive(false); 
+                    blob2.SetActive(false); 
+                    blob3.SetActive(false); 
+                }
+                else
+                {
+                    blob1.SetActive(true);LightShadowCasterMod
+                    blob2.SetActive(false);
+                    blob3.SetActive(false); 
+                }
+            break; 
+            
+            case 1: 
+                if(blob2.activeInHierarchy == true)
+                {
+                    blob1.SetActive(false); 
+                    blob2.SetActive(false); 
+                    blob3.SetActive(false);
+                }
+                else
+                {
+                    blob2.SetActive(true);
+                    blob1.SetActive(false); 
+                    gToggle.isOn = false; 
+                    blob3.SetActive(false); 
+                }
+            break; 
+
+            case 2: 
+                if(blob3.activeInHierarchy == true)
+                {
+                    blob1.SetActive(false); 
+                    blob2.SetActive(false); 
+                    blob3.SetActive(false);
+                }
+                else
+                {
+                    blob3.SetActive(true);
+                    blob1.SetActive(false); 
+                    blob2.SetActive(false); 
                 }
             break; 
         }
