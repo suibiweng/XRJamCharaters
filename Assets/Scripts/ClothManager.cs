@@ -30,7 +30,7 @@ public class ClothManager : MonoBehaviour
     public Color tempColor; 
     public float red, green, blue;
     // private static readonly string SAVE_FOLDER = Application.dataPath + "/Saves/"; 
-    public string saveFile ;
+    public string saveFile, saveFile_g, saveFile_d, saveFile_p;
     public bool isLoadCloth;
     public TextAsset saveJson; 
     private void Awake()
@@ -49,6 +49,9 @@ public class ClothManager : MonoBehaviour
     void Start()
     {
         saveFile = Application.dataPath + "/save.txt"; 
+        saveFile_g = Application.dataPath + "/saveGuitar.txt"; 
+        saveFile_d = Application.dataPath + "/saveDrums.txt"; 
+        saveFile_p = Application.dataPath + "/savePiano.txt"; 
         findObj();
         objOff(); 
         A_index = 0; 
@@ -384,7 +387,10 @@ public class ClothManager : MonoBehaviour
             blue = blue
         };
         string json =JsonUtility.ToJson(saveBlob); 
-        File.WriteAllText(saveFile, json);  
+        File.WriteAllText(saveFile,json);
+        File.WriteAllText(saveFile_g, json);
+        File.WriteAllText(saveFile_d, json);  
+        File.WriteAllText(saveFile_p, json);
         
         string saveString = File.ReadAllText(saveFile); 
         Debug.Log(saveString); 
