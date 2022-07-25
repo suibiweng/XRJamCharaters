@@ -12,6 +12,7 @@ public class AudioSound : MonoBehaviour
     private AudioSource audioSource; 
     private float low = 0.75f; 
     private float high = 1.25f; 
+    public float tempo; 
 
     void Awake()
     {
@@ -25,13 +26,16 @@ public class AudioSound : MonoBehaviour
     {
         if(blob1.activeSelf == true)
         {
+            // audioSource.outputAudioMixerGroup.audioMixer.SetFloat("Pitch", 1f/low);
             pitchValue = GUI.HorizontalSlider(new Rect(700,380,100,500), pitchValue, low, high); 
             audioSource.pitch = pitchValue;
+            audioSource.outputAudioMixerGroup.audioMixer.SetFloat("Pitch", 1f/pitchValue);
         } 
         if(blob2.activeSelf == true)
         {
             pitchValue = GUI.HorizontalSlider(new Rect(100,380,100,500), pitchValue, low, high); 
             audioSource.pitch = pitchValue; 
+            audioSource.outputAudioMixerGroup.audioMixer.SetFloat("Pitch", 1f/low);
         }
         if(blob3.activeSelf == true)
         {

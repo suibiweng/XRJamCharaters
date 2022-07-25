@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class StudioManager : MonoBehaviour
 {
     public GameObject blob1, blob2, blob3; 
+    public ClothManager gBlob, dBlob, pBlob; 
     public GameObject [] guitar; 
     public GameObject [] piano; 
     public GameObject [] drums;
@@ -17,9 +18,16 @@ public class StudioManager : MonoBehaviour
     void Start()
     {
         findObj();
-        closeObjs(guitar);
-        closeObjs(piano);
-        closeObjs(drums); 
+        // closeObjs(guitar);
+        // closeObjs(piano);
+        // closeObjs(drums); 
+        openObjs(guitar);
+        openObjs(piano);
+        openObjs(drums);
+
+        gBlob.Load();
+        dBlob.Load();
+        pBlob.Load(); 
     }
 
     // Update is called once per frame
@@ -110,4 +118,6 @@ public class StudioManager : MonoBehaviour
             break; 
         }
     }
+
+    
 }
