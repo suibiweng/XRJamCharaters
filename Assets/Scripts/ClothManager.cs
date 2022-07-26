@@ -472,7 +472,7 @@ public class ClothManager : MonoBehaviour
 
         }
 
-        if (File.Exists(saveFile_d))
+        if (File.Exists(saveFile_d) && tag == "drums")
         {
             string saveString = File.ReadAllText(saveFile_d); 
             Debug.Log(saveString); 
@@ -541,7 +541,7 @@ public class ClothManager : MonoBehaviour
 
         }
 
-        if (File.Exists(saveFile_g))
+        if (File.Exists(saveFile_g) && tag == "guitar")
         {
             string saveString = File.ReadAllText(saveFile_g); 
             Debug.Log(saveString); 
@@ -610,7 +610,7 @@ public class ClothManager : MonoBehaviour
 
         }
 
-        if (File.Exists(saveFile_p))
+        if (File.Exists(saveFile_p) && tag == "piano")
         {
             string saveString = File.ReadAllText(saveFile_p); 
             Debug.Log(saveString); 

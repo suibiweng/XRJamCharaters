@@ -365,8 +365,8 @@
 "Assets/Scripts/PlayerDataManager.cs"
 "Assets/Scripts/SaveBlobManager.cs"
 "Assets/Scripts/SaveData.cs"
+"Assets/Scripts/StudioManager.cs"
 "Assets/Scripts/StudioPage.cs"
-"Assets/StudioManager.cs"
 -langversion:9.0
 
 /deterministic

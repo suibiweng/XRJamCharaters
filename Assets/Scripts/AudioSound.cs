@@ -27,7 +27,7 @@ public class AudioSound : MonoBehaviour
         if(blob1.activeSelf == true)
         {
             // audioSource.outputAudioMixerGroup.audioMixer.SetFloat("Pitch", 1f/low);
-            pitchValue = GUI.HorizontalSlider(new Rect(700,380,100,500), pitchValue, low, high); 
+            pitchValue = GUI.HorizontalSlider(new Rect(700,350,100,500), pitchValue, low, high); 
             audioSource.pitch = pitchValue;
             audioSource.outputAudioMixerGroup.audioMixer.SetFloat("Pitch", 1f/pitchValue);
         } 
