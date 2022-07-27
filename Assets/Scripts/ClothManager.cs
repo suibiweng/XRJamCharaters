@@ -12,11 +12,11 @@ using UnityEngine.UI;
 public class ClothManager : MonoBehaviour
 {
 
-    public GameObject [] accessories; 
-    public GameObject [] tops; 
-    public GameObject [] pants; 
-    public GameObject [] shoes; 
-    public GameObject [] hair; 
+    public List<GameObject> accessories; 
+    public List<GameObject> tops; 
+    public List<GameObject> pants; 
+    public List<GameObject> shoes; 
+    public List<GameObject> hair; 
  
     //test toggle
     public  GameObject obj;
@@ -49,12 +49,20 @@ public class ClothManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        accessories = new List<GameObject>();
+        tops = new List<GameObject>();
+        pants = new List<GameObject>();
+        shoes = new List<GameObject>();
+        hair = new List<GameObject>();
+
+        findObj();
+        objOff(); 
         saveFile = Application.dataPath + "/save.txt"; 
         saveFile_g = Application.dataPath + "/saveGuitar.txt"; 
         saveFile_d = Application.dataPath + "/saveDrums.txt"; 
         saveFile_p = Application.dataPath + "/savePiano.txt"; 
-        findObj();
-        objOff(); 
+    
         A_index = 0; 
         T_index = 0; 
         P_index = 0; 
@@ -62,6 +70,7 @@ public class ClothManager : MonoBehaviour
         S_index = 0; 
         if(isLoadCloth)
         {
+            print("load cloth");
             //if the blob is currently active in the hiearchy, then load the blob and clothes
             //will then turn off clothes on inactive blob so that clothes can be loaded on active blob 
             //error says can't load clothes on other blob because only able to on first blob in array
@@ -104,17 +113,49 @@ public class ClothManager : MonoBehaviour
 
     public void findObj()
     {
-        accessories = GameObject.FindGameObjectsWithTag("aObj"); 
-        tops = GameObject.FindGameObjectsWithTag("tObj");
-        pants = GameObject.FindGameObjectsWithTag("pObj"); 
-        shoes = GameObject.FindGameObjectsWithTag("sObj"); 
-        hair = GameObject.FindGameObjectsWithTag("hObj"); 
+       GameObject [] childs =gameObject.GetComponentsInChildren<GameObject>();
+       
+       for(int i = 0; i < childs.Length; i++)
+       {
+            if(childs[i].tag == "aObj")
+            {
+                accessories.Add(childs[i]);
+                print("found accessory");
+            }
+            if(childs[i].tag == "tObj")
+            {
+                accessories.Add(childs[i]);
+            }
+            if(childs[i].tag == "pObj")
+            {
+                accessories.Add(childs[i]);
+            }
+            if(childs[i].tag == "sObj")
+            {
+                accessories.Add(childs[i]);
+            }
+            if(childs[i].tag == "hObj")
+            {
+                accessories.Add(childs[i]);
+            }
+
+       }
+       
+      //  accessories = GameObject.FindGameObjectsWithTag("aObj"); 
+
+
+
+        
+     //   tops = GameObject.FindGameObjectsWithTag("tObj");
+     //   pants = GameObject.FindGameObjectsWithTag("pObj"); 
+       // shoes = GameObject.FindGameObjectsWithTag("sObj"); 
+        //hair = GameObject.FindGameObjectsWithTag("hObj"); 
     }
     public void objOff()
     {
-        for (int i = 0; i < accessories.Length; i++)
+        for (int i = 0; i < accessories.Count; i++)
         {
-            accessories[i].SetActive(false); 
+            accessories[i].SetActive(false);
             // accessories[i] = objects[i];
             // for each (var item in accessories)
             // {
@@ -122,22 +163,22 @@ public class ClothManager : MonoBehaviour
             // }
         }
       
-        for (int i = 0; i < tops.Length; i++)
+        for (int i = 0; i < tops.Count; i++)
         {
             tops[i].SetActive(false); 
         }
 
-        for (int i = 0; i < pants.Length; i++)
+        for (int i = 0; i < pants.Count; i++)
         {
             pants[i].SetActive(false); 
         }
 
-        for (int i = 0; i < shoes.Length; i++)
+        for (int i = 0; i < shoes.Count; i++)
         {
             shoes[i].SetActive(false); 
         }
 
-        for (int i = 0; i < hair.Length; i++)
+        for (int i = 0; i < hair.Count; i++)
         {
             hair[i].SetActive(false); 
         }
@@ -145,14 +186,14 @@ public class ClothManager : MonoBehaviour
        
     }
 
-    void closeObjs(GameObject [] objs)
+    void closeObjs(List<GameObject> objs)
     {
         foreach(var o in objs)
         {
             o.SetActive(false);
         }
     }
-    void openObjs(GameObject [] obs)
+    void openObjs(List<GameObject> obs)
     {
         foreach(var o in obs)
         {
@@ -167,7 +208,7 @@ public class ClothManager : MonoBehaviour
         {
             case 0:
                 A_index++;
-                if (A_index >= accessories.Length)
+                if (A_index >= accessories.Count)
                 {
                     A_index = 0;
                 }
@@ -179,7 +220,7 @@ public class ClothManager : MonoBehaviour
             
             case 1:
                 T_index++;
-                if (T_index >= tops.Length)
+                if (T_index >= tops.Count)
                 {
                     T_index = 0;
                 }
@@ -191,7 +232,7 @@ public class ClothManager : MonoBehaviour
             
             case 2:
                 P_index++;
-                if (P_index >= pants.Length)
+                if (P_index >= pants.Count)
                 {
                     P_index = 0;
                 }
@@ -203,7 +244,7 @@ public class ClothManager : MonoBehaviour
 
             case 3:
                 H_index++;
-                if (H_index >= hair.Length)
+                if (H_index >= hair.Count)
                 {
                     H_index = 0;
                 }
@@ -215,7 +256,7 @@ public class ClothManager : MonoBehaviour
 
             case 4:
                 S_index++;
-                if (S_index >= shoes.Length)
+                if (S_index >= shoes.Count)
                 {
                     S_index = 0;
                 }
@@ -236,7 +277,7 @@ public class ClothManager : MonoBehaviour
                 A_index--;
                 if (A_index < 0)
                 {
-                    A_index = accessories.Length - 1;
+                    A_index = accessories.Count - 1;
                 }
                     
                 closeObjs(accessories);
@@ -247,7 +288,7 @@ public class ClothManager : MonoBehaviour
                 T_index--;
                 if (T_index < 0)
                 {
-                    T_index = tops.Length - 1;
+                    T_index = tops.Count - 1;
                 }
                     
                 closeObjs(tops);
@@ -258,7 +299,7 @@ public class ClothManager : MonoBehaviour
                 P_index--;
                 if (P_index < 0)
                 {
-                    P_index = pants.Length - 1;
+                    P_index = pants.Count - 1;
                 }
                     
                 closeObjs(pants);
@@ -269,7 +310,7 @@ public class ClothManager : MonoBehaviour
                 H_index--;
                 if (H_index < 0)
                 {
-                    H_index = hair.Length - 1;
+                    H_index = hair.Count - 1;
                 }
                     
                 closeObjs(hair);
@@ -280,7 +321,7 @@ public class ClothManager : MonoBehaviour
                 S_index--;
                 if (S_index < 0)
                 {
-                    S_index = shoes.Length - 1;
+                    S_index = shoes.Count - 1;
                 }
                     
                 closeObjs(shoes);
@@ -411,7 +452,7 @@ public class ClothManager : MonoBehaviour
             SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString); 
 
             //for when user is in scene 2 and wants to load the last saved fit
-            closeObjs(accessories);
+           // closeObjs(accessories);
             closeObjs(tops);
             closeObjs(pants);
             closeObjs(hair);
@@ -480,7 +521,7 @@ public class ClothManager : MonoBehaviour
             SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString); 
 
             //for when user is in scene 2 and wants to load the last saved fit
-            closeObjs(accessories);
+          //  closeObjs(accessories);
             closeObjs(tops);
             closeObjs(pants);
             closeObjs(hair);
@@ -549,7 +590,7 @@ public class ClothManager : MonoBehaviour
             SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString); 
 
             //for when user is in scene 2 and wants to load the last saved fit
-            closeObjs(accessories);
+          //  closeObjs(accessories);
             closeObjs(tops);
             closeObjs(pants);
             closeObjs(hair);
