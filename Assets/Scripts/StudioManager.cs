@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class StudioManager : MonoBehaviour
 {
     public GameObject blob1, blob2, blob3; 
-    public ClothManager gBlob, dBlob, pBlob; 
+    // public ClothManager gBlob, dBlob, pBlob; 
     public GameObject [] guitar; 
     public GameObject [] piano; 
     public GameObject [] drums;
@@ -25,9 +25,9 @@ public class StudioManager : MonoBehaviour
         openObjs(piano);
         openObjs(drums);
 
-        gBlob.Load();
-        dBlob.Load();
-        pBlob.Load(); 
+        // gBlob.Load();
+        // dBlob.Load();
+        // pBlob.Load(); 
     }
 
     // Update is called once per frame

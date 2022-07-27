@@ -20,7 +20,7 @@ public class ClothManager : MonoBehaviour
  
     //test toggle
     public  GameObject obj;
-    public StudioManager gBlob; 
+    // public StudioManager gBlob; 
     public bool isEnabled = true; 
 
     public static ClothManager Instance; 
@@ -610,74 +610,74 @@ public class ClothManager : MonoBehaviour
 
         }
 
-        if (File.Exists(saveFile_p) && tag == "piano")
-        {
-            string saveString = File.ReadAllText(saveFile_p); 
-            Debug.Log(saveString); 
+        // if (File.Exists(saveFile_p) && tag == "piano")
+        // {
+        //     string saveString = File.ReadAllText(saveFile_p); 
+        //     Debug.Log(saveString); 
 
-            SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString); 
+        //     SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString); 
 
-            //for when user is in scene 2 and wants to load the last saved fit
-            closeObjs(accessories);
-            closeObjs(tops);
-            closeObjs(pants);
-            closeObjs(hair);
-            closeObjs(shoes);
+        //     //for when user is in scene 2 and wants to load the last saved fit
+        //     closeObjs(accessories);
+        //     closeObjs(tops);
+        //     closeObjs(pants);
+        //     closeObjs(hair);
+        //     closeObjs(shoes);
 
-            A_index = saveObject.A_index;
-            T_index = saveObject.T_index; 
-            P_index = saveObject.P_index;
-            H_index = saveObject.H_index;  
-            S_index = saveObject.S_index; 
+        //     A_index = saveObject.A_index;
+        //     T_index = saveObject.T_index; 
+        //     P_index = saveObject.P_index;
+        //     H_index = saveObject.H_index;  
+        //     S_index = saveObject.S_index; 
 
-            accessories[A_index].SetActive(true); 
-            tops[T_index].SetActive(true); 
-            pants[P_index].SetActive(true);
-            hair[H_index].SetActive(true);
-            shoes[S_index].SetActive(true);
-            // print(A_index);
-            // print(T_index);
-            // print(P_index);
-            // print(H_index);
-            // print(S_index);
+        //     accessories[A_index].SetActive(true); 
+        //     tops[T_index].SetActive(true); 
+        //     pants[P_index].SetActive(true);
+        //     hair[H_index].SetActive(true);
+        //     shoes[S_index].SetActive(true);
+        //     // print(A_index);
+        //     // print(T_index);
+        //     // print(P_index);
+        //     // print(H_index);
+        //     // print(S_index);
 
-            red = saveObject.red; 
-            green = saveObject.green; 
-            blue = saveObject.blue;
-            // // print(red);
-            // // print(green);
-            // // print (blue);
+        //     red = saveObject.red; 
+        //     green = saveObject.green; 
+        //     blue = saveObject.blue;
+        //     // // print(red);
+        //     // // print(green);
+        //     // // print (blue);
 
-            tempColor.r = red/255f;
-            tempColor.g = green/255f;
-            tempColor.b = blue/255f; 
+        //     tempColor.r = red/255f;
+        //     tempColor.g = green/255f;
+        //     tempColor.b = blue/255f; 
 
-            print("temp:");
-            Debug.Log(tempColor);
-            // // GetComponent<MeshRenderer>().material.color = tempColor;
-            material.color = tempColor;
-            print("material:");
-            Debug.Log(material.color);
-            print("fcp:");
-            Debug.Log((float)((Color32)fcp.color).r);
-            Debug.Log((float)((Color32)fcp.color).g);
-            Debug.Log((float)((Color32)fcp.color).b);
+        //     print("temp:");
+        //     Debug.Log(tempColor);
+        //     // // GetComponent<MeshRenderer>().material.color = tempColor;
+        //     material.color = tempColor;
+        //     print("material:");
+        //     Debug.Log(material.color);
+        //     print("fcp:");
+        //     Debug.Log((float)((Color32)fcp.color).r);
+        //     Debug.Log((float)((Color32)fcp.color).g);
+        //     Debug.Log((float)((Color32)fcp.color).b);
 
-            //Debug: when fcp.color is set to the color saved, it outputs rgba(255,255,255,255)
-            fcp.color = material.color; 
-            print("set fcp from material");
-            Debug.Log(fcp.color);
+        //     //Debug: when fcp.color is set to the color saved, it outputs rgba(255,255,255,255)
+        //     fcp.color = material.color; 
+        //     print("set fcp from material");
+        //     Debug.Log(fcp.color);
 
-            PlayerPrefs.SetFloat("red", (float)((Color32)fcp.color).r);
-            PlayerPrefs.SetFloat("blue", (float)((Color32)fcp.color).b);
-            PlayerPrefs.SetFloat("green", (float)((Color32)fcp.color).g);
+        //     PlayerPrefs.SetFloat("red", (float)((Color32)fcp.color).r);
+        //     PlayerPrefs.SetFloat("blue", (float)((Color32)fcp.color).b);
+        //     PlayerPrefs.SetFloat("green", (float)((Color32)fcp.color).g);
 
-            // Debug.Log(red);
-            // Debug.Log((float)((Color32)fcp.color).r);
-            // Debug.Log((float)((Color32)fcp.color).g);
-            // Debug.Log((float)((Color32)fcp.color).b);
+        //     // Debug.Log(red);
+        //     // Debug.Log((float)((Color32)fcp.color).r);
+        //     // Debug.Log((float)((Color32)fcp.color).g);
+        //     // Debug.Log((float)((Color32)fcp.color).b);
 
-        }
+        // }
         // SaveObject.SetInt(SaveObject.A_index);
         // Debug.Log(A_index); 
 

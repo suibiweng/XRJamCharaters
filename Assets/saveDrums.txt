@@ -1,0 +1,1 @@
+{"A_index":8,"T_index":4,"P_index":2,"H_index":3,"S_index":2,"red":102.0,"green":38.0,"blue":141.0}

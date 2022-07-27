@@ -54,10 +54,10 @@
      <Compile Include="Assets\FlexibleColorPicker\Scripts\FlexibleColorPicker.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
-     <None Include="Assets\Scripts\JSON Files\savePiano.txt" />
+     <None Include="Assets\savePiano.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
-     <None Include="Assets\Scripts\JSON Files\save.txt" />
-     <None Include="Assets\Scripts\JSON Files\saveGuitar.txt" />
+     <None Include="Assets\save.txt" />
+     <None Include="Assets\saveGuitar.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
@@ -72,7 +72,7 @@
      <None Include="Assets\Nanum_Gothic\OFL.txt" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\FlexibleColorPicker\Materials\FCP_Gradient.shader" />
-     <None Include="Assets\Scripts\JSON Files\saveDrums.txt" />
+     <None Include="Assets\saveDrums.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
@@ -325,6 +325,9 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
         <HintPath>C:\Users\torsh\XRJam-BlobCustomization\Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+        <HintPath>C:\Users\torsh\XRJam-BlobCustomization\Assets\NRSDK\Plugins\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.1f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -784,6 +787,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="NRSDKEditor.csproj">
+      <Project>{faa85505-8421-06e3-7d61-a4afeaf8066d}</Project>
+      <Name>NRSDKEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NRSDK.csproj">
+      <Project>{5336cc32-d566-6e88-3b9f-1e386752ce07}</Project>
+      <Name>NRSDK</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
