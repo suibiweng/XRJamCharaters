@@ -52,6 +52,8 @@
      <Compile Include="Assets\Scripts\AudioSound.cs" />
      <Compile Include="Assets\Scripts\PlayerDataManager.cs" />
      <Compile Include="Assets\FlexibleColorPicker\Scripts\FlexibleColorPicker.cs" />
+     <Compile Include="Assets\Scripts\SoundVisual.cs" />
+     <Compile Include="Assets\Scripts\SoundManager.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\savePiano.txt" />

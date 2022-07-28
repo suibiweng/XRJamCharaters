@@ -49,14 +49,15 @@ public class ClothManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         accessories = new List<GameObject>();
         tops = new List<GameObject>();
         pants = new List<GameObject>();
         shoes = new List<GameObject>();
         hair = new List<GameObject>();
 
+        print("lists created"); 
         findObj();
+        print("found objects");
         objOff(); 
         saveFile = Application.dataPath + "/save.txt"; 
         saveFile_g = Application.dataPath + "/saveGuitar.txt"; 
@@ -113,10 +114,12 @@ public class ClothManager : MonoBehaviour
 
     public void findObj()
     {
-       GameObject [] childs =gameObject.GetComponentsInChildren<GameObject>();
+       GameObject [] childs = gameObject.GetComponentsInChildren<GameObject>();
        
        for(int i = 0; i < childs.Length; i++)
        {
+            Debug.Log("reading children: ", childs[i]);
+
             if(childs[i].tag == "aObj")
             {
                 accessories.Add(childs[i]);
@@ -124,19 +127,19 @@ public class ClothManager : MonoBehaviour
             }
             if(childs[i].tag == "tObj")
             {
-                accessories.Add(childs[i]);
+                tops.Add(childs[i]);
             }
             if(childs[i].tag == "pObj")
             {
-                accessories.Add(childs[i]);
+                pants.Add(childs[i]);
             }
             if(childs[i].tag == "sObj")
             {
-                accessories.Add(childs[i]);
+                shoes.Add(childs[i]);
             }
             if(childs[i].tag == "hObj")
             {
-                accessories.Add(childs[i]);
+                hair.Add(childs[i]);
             }
 
        }

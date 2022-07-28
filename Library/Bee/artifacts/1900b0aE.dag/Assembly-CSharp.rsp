@@ -368,6 +368,8 @@
 "Assets/Scripts/PlayerDataManager.cs"
 "Assets/Scripts/SaveBlobManager.cs"
 "Assets/Scripts/SaveData.cs"
+"Assets/Scripts/SoundManager.cs"
+"Assets/Scripts/SoundVisual.cs"
 "Assets/Scripts/StudioManager.cs"
 "Assets/Scripts/StudioPage.cs"
 -langversion:9.0
