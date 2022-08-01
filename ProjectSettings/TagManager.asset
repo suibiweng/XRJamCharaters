@@ -13,6 +13,7 @@ TagManager:
   - piano
   - drums
   - guitar
+  - floor
   layers:
   - Default
   - TransparentFX

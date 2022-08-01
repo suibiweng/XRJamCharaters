@@ -112,9 +112,11 @@ public class ClothManager : MonoBehaviour
         // }
     }
 
+Transform [] childs ;
     public void findObj()
     {
-       GameObject [] childs = gameObject.GetComponentsInChildren<GameObject>();
+        //can't use GetComponentsInChildren with GameObject 
+     childs = GetComponentsInChildren<Transform>();
        
        for(int i = 0; i < childs.Length; i++)
        {
@@ -122,24 +124,24 @@ public class ClothManager : MonoBehaviour
 
             if(childs[i].tag == "aObj")
             {
-                accessories.Add(childs[i]);
+                accessories.Add(childs[i].gameObject);
                 print("found accessory");
             }
             if(childs[i].tag == "tObj")
             {
-                tops.Add(childs[i]);
+                tops.Add(childs[i].gameObject);
             }
             if(childs[i].tag == "pObj")
             {
-                pants.Add(childs[i]);
+                pants.Add(childs[i].gameObject);
             }
             if(childs[i].tag == "sObj")
             {
-                shoes.Add(childs[i]);
+                shoes.Add(childs[i].gameObject);
             }
             if(childs[i].tag == "hObj")
             {
-                hair.Add(childs[i]);
+                hair.Add(childs[i].gameObject);
             }
 
        }
