@@ -39,7 +39,9 @@
      <Compile Include="Assets\Scripts\CharacterHandler.cs" />
      <Compile Include="Assets\Scripts\SoundManager.cs" />
      <Compile Include="Assets\Scripts\SaveData.cs" />
+     <Compile Include="Assets\Scripts\Communicate\ObjA.cs" />
      <Compile Include="Assets\FlexibleColorPicker\Scripts\FCP_SpriteMeshEditor.cs" />
+     <Compile Include="Assets\Scripts\CollisonExample\CollisionExample.cs" />
      <Compile Include="Assets\Scripts\BlobCustomizer.cs" />
      <Compile Include="Assets\Scripts\StudioPage.cs" />
      <Compile Include="Assets\Scripts\ChangeMaterialColor.cs" />
@@ -54,8 +56,6 @@
      <Compile Include="Assets\Scripts\AudioSound.cs" />
      <Compile Include="Assets\Scripts\PlayerDataManager.cs" />
      <Compile Include="Assets\FlexibleColorPicker\Scripts\FlexibleColorPicker.cs" />
-     <Compile Include="Assets\Scripts\CollisonExample\CollisionExample.cs" />
-     <Compile Include="Assets\Scripts\Communicate\ObjA.cs" />
      <Compile Include="Assets\Scripts\Communicate\ObjB.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
